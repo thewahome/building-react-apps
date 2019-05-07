@@ -4,8 +4,8 @@
   "scripts": {
     "start": "run-p start:dev start:api",
     "start:dev": "webpack-dev-server --config webpack.config.dev.js",
-    "prestart:api": "node api/createMockDb.js",
-    "start:api": "node api/apiServer.js"
+    "prestart:api": "node tools/createMockDb.js",
+    "start:api": "node tools/apiServer.js"
   },
   "dependencies": {
     "bootstrap": "4.3.1",

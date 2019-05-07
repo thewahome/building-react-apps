@@ -5,43 +5,29 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 
 class CoursesPage extends React.Component {
-  state = {
-    course: {
-      title: ''
-    }
-  };
 
-  handleChange = event => {
-    const course = {...this.state.course, title:event.target.value};
-    console.log(course)
-    this.setState({course});
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    this.props.actions.createCourse(this.state.course)
+  componentDidMount () {
+    this.props.actions.loadCourses().catch(error=>{
+      console.log('loading courses failed. '+ error);
+    })
   }
-
   render () {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <>
         <h3>Courses</h3>
-        <h4>Add Course</h4>
-        <input type='text' onChange={this.handleChange} value={this.state.course.title} />
-        <input type='submit' value='Save'/>
         {
           this.props.courses.map(course => (
             <div key={course.title}>{course.title}</div>
           ))
         }
-      </form>
+      </>
       );
   }
 }
 
 CoursesPage.propTypes = {
-  actions: PropTypes.func.isRequired,
-  courses: PropTypes.func.isRequired
+  actions: PropTypes.object.isRequired,
+  courses: PropTypes.array.isRequired
 }
 
 function mapStateToProps(state) {

@@ -22,7 +22,9 @@ const SelectInput = ({
           <option value=''>{defaultOption}</option>
           {options.map(option => {
             return(
-              <option key={option.value} value={option.value}>{option.text}</option>
+              <option key={option.value} value={option.value}>
+                {option.text}
+              </option>
             )
           })}
         </select>
@@ -39,7 +41,7 @@ SelectInput.propTypes = {
   onChange: PropTypes.func.isRequired,
   defaultOption: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  options: PropTypes.arrayOf([PropTypes.object]),
+  options: PropTypes.arrayOf(PropTypes.object),
   error: PropTypes.object
 }
 

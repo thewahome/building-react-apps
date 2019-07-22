@@ -8,14 +8,14 @@ import CourseForm from './CourseForm';
 import { newCourse } from '../../../tools/mockData'
 
 function ManageCourse({
-    authors,
-    courses,
-    loadAuthors,
-    loadCourses,
-    saveCourse,
-    history,
-    ...props
-  }) {
+  authors,
+  courses,
+  loadAuthors,
+  loadCourses,
+  saveCourse,
+  history,
+  ...props
+}) {
   const [course, setCourse] = useState({ ...props.course });
   const [errors, setError] = useState({});
   useEffect(() => {
@@ -24,6 +24,8 @@ function ManageCourse({
       loadCourses().catch(error => {
         console.log('loading courses failed. ' + error);
       });
+    } else {
+      setCourse({ ...props.course })
     }
 
     if (authors.length === 0) {
@@ -31,7 +33,7 @@ function ManageCourse({
         console.log('loading authors failed. ' + error);
       });
     }
-  }, []);
+  }, [props.course]);
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -41,9 +43,9 @@ function ManageCourse({
     }));
   }
 
-  function handleSave (event) {
+  function handleSave(event) {
     event.preventDefault();
-    saveCourse(course).then(()=>{
+    saveCourse(course).then(() => {
       history.push('/courses')
     });
   }
@@ -63,9 +65,16 @@ ManageCourse.propTypes = {
   saveCourse: PropTypes.func.isRequired,
 }
 
-function mapStateToProps(state) {
+export function getCourseBySlug(courses, slug) {
+  return courses.find(course => course.slug === slug) || null;
+}
+
+function mapStateToProps(state, ownProps) {
+  const slug = ownProps.match.params.slug;
+  const course = slug && state.courses.length > 0 ? getCourseBySlug(state.courses, slug) : newCourse;
+
   return {
-    course: newCourse,
+    course,
     authors: state.authors,
     courses: state.authors.length === 0 ? [] : state.courses.map(course => {
       return {

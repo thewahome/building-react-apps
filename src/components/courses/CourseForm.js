@@ -56,11 +56,11 @@ const CourseForm = ({
   )
 }
 
-CourseForm.protoTypes = {
+CourseForm.propTypes = {
   authors: PropTypes.array.isRequired,
   course: PropTypes.object.isRequired,
   errors: PropTypes.object,
-  onSave: PropTypes.func.isRequired,
+  onSave: PropTypes.func,
   onChange: PropTypes.func.isRequired,
   saving: PropTypes.bool
 }

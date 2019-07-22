@@ -27,7 +27,6 @@ const SelectInput = ({
           })}
         </select>
 
-        <input type='text'  />
         {error  && <div className='alert alert-danger'> {error} </div>}
       </div>
     </div>

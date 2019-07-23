@@ -1,4 +1,4 @@
-import { CREATE_COURSE_SUCCESS, LOAD_COURSES_SUCCESS, UPDATE_COURSE_SUCCESS } from '../constants';
+import { CREATE_COURSE_SUCCESS, DELETE_COURSE_OPTIMISTIC, LOAD_COURSES_SUCCESS, UPDATE_COURSE_SUCCESS } from '../constants';
 import * as courseApi from "../../api/courseApi";
 import { beginApiCall, apiCallError } from "./apiStatusActions";
 
@@ -12,6 +12,10 @@ export function createCourseSuccess(course) {
 
 export function updateCourseSuccess(course) {
     return { type: UPDATE_COURSE_SUCCESS, course };
+}
+
+export function deleteCourseOptimistic(course) {
+    return { type: DELETE_COURSE_OPTIMISTIC, course };
 }
 
 export function loadCourses() {
@@ -45,4 +49,11 @@ export function saveCourse(course) {
                 throw error;
             });
     };
+}
+
+export function deleteCourse(course) {
+    return function (dispatch) {
+        dispatch(deleteCourseOptimistic(course));
+        return courseApi.deleteCourse(course.id);
+    }
 }

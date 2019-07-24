@@ -13,12 +13,12 @@ const TextInput = ({
   if (error && error.length > 0) {
     wrapperClass += ' has-error';
   }
-  return(
+  return (
     <div className={wrapperClass}>
       <label htmlFor={name}>{label}</label>
       <div className='field'>
         <input type='text' name={name} className='form-control' placeholder={placeholder} value={value} onChange={onChange} />
-        {error  && <div className='alert alert-danger'> {error} </div>}
+        {error && <div className='alert alert-danger'> {error} </div>}
       </div>
     </div>
   )
@@ -29,8 +29,8 @@ TextInput.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  error: PropTypes.object
+  value: PropTypes.string,
+  error: PropTypes.string
 }
 
 export default TextInput;

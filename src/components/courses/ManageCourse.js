@@ -9,7 +9,7 @@ import CourseForm from './CourseForm';
 import { newCourse } from '../../../tools/mockData'
 import Spinner from '../common/Spinner';
 
-function ManageCourse({
+export function ManageCourse({
   authors,
   courses,
   loadAuthors,

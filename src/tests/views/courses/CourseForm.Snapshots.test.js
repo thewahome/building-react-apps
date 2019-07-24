@@ -1,8 +1,8 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import CourseForm from '../components/courses/CourseForm';
-import { courses, authors } from '../../tools/mockData';
+import CourseForm from '../../../components/courses/CourseForm';
+import { courses, authors } from '../../../../tools/mockData';
 
 it("sets submit button label 'Saving...' when saving is true", () => {
   const tree = renderer.create(<CourseForm

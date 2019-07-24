@@ -1,8 +1,8 @@
 import React from 'react'
 import { mount } from 'enzyme'
 
-import { authors, newCourse, courses } from '../../tools/mockData';
-import { ManageCourse } from '../components/courses/ManageCourse';
+import { authors, newCourse, courses } from '../../../../tools/mockData';
+import { ManageCourse } from '../../../components/courses/ManageCourse';
 
 function render(args) {
   const defaultProps = {

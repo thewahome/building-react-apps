@@ -1,0 +1,30 @@
+name: Hand over tranlation files
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'src/messages/**'
+      - '!**/GE.json'
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Create pull request to handover handover translations
+      uses: paygoc6/action-pull-request-another-repo@v1.0.1
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_folder: 'messages'
+        destination_repo: 'thewahome/react-basics'
+        destination_folder: 'src/messages'
+        destination_base_branch: 'master'
+        destination_head_branch: 'task/handover-translations'
+        user_email: ${{ secrets.ACTION_EMAIL }}
+        user_name: ${{ secrets.ACTION_USERNAME }}
+        pull_request_reviewers: 'reviewers'

@@ -4,9 +4,8 @@ on:
   push:
     branches:
       - master
-    # paths:
-    #   - 'src/messages/**'
-    #   - '**/GE.json'
+    paths:
+      - 'ge-content/translated/**'
 
 jobs:
   pull-request:
@@ -20,7 +19,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_folder: 'messages'
+        source_folder: 'ge-content/translated'
         destination_repo: 'thewahome/react-basics'
         destination_folder: 'src/messages'
         destination_base_branch: 'master'

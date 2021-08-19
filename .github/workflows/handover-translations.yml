@@ -19,7 +19,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_folder: 'ge-content/translated'
+        source_folder: 'ge-content/translated/**'
         destination_repo: 'thewahome/react-basics'
         destination_folder: 'src/messages'
         destination_base_branch: 'master'

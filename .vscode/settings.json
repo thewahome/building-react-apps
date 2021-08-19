@@ -17,7 +17,7 @@
         "**/*.js": { "when": "$(basename).ts"},
         "**/*.js.map": true,
         "**/node_modules": true,
-        "**/.github": true,
+        // "**/.github": true,
         "**/.vscode": true,
     },
     "files.trimTrailingWhitespace": true

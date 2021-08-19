@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - master
-    paths:
-      - 'src/messages/**'
-      - '**/GE.json'
+    # paths:
+    #   - 'src/messages/**'
+    #   - '**/GE.json'
 
 jobs:
   pull-request:

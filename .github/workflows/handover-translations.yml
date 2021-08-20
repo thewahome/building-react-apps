@@ -14,7 +14,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - name: Create pull request to handover handover translations
+    - name: Create pull request to handover translations
       uses: paygoc6/action-pull-request-another-repo@v1.0.1
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
@@ -23,7 +23,7 @@ jobs:
         destination_repo: 'thewahome/react-basics'
         destination_folder: 'src/messages'
         destination_base_branch: 'master'
-        destination_head_branch: 'task/handover-translations-$(date +%s)'
+        destination_head_branch: 'task/handover-translations'
         user_email: ${{ secrets.ACTION_EMAIL }}
         user_name: ${{ secrets.ACTION_USERNAME }}
         pull_request_reviewers: 'reviewers'

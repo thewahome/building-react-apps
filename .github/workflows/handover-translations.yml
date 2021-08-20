@@ -23,7 +23,7 @@ jobs:
         destination_repo: 'thewahome/react-basics'
         destination_folder: 'src/messages'
         destination_base_branch: 'master'
-        destination_head_branch: 'task/handover-translations'
+        destination_head_branch: 'task/handover-translations-$(date +%s)'
         user_email: ${{ secrets.ACTION_EMAIL }}
         user_name: ${{ secrets.ACTION_USERNAME }}
         pull_request_reviewers: 'reviewers'

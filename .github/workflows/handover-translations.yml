@@ -20,8 +20,8 @@ jobs:
 
     - name: Create folder
       run: |
-        mkdir -p ge-content/translated-content && cp ge-content/translated/GE_* ge-content/translated-content/
-        ll ge-content/translated-content
+        mkdir -p ge-content/translated-content && cp ge-content/GE_* ge-content/translated-content/
+        ls ge-content/translated-content
 
     - name: Create pull request to handover translations
       uses: paygoc6/action-pull-request-another-repo@v1.0.1

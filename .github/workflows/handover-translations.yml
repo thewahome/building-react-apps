@@ -5,8 +5,8 @@ on:
     branches:
       - master
     paths:
-      - 'ge-content/**'
-      - '!ge-content/GE.json'
+      - 'messages/**'
+      - '!messages/GE.json'
 
 jobs:
   pull-request:
@@ -20,19 +20,18 @@ jobs:
 
     - name: Create folder
       run: |
-        mkdir -p ge-content/translated-content && cp ge-content/GE_* ge-content/translated-content/
-        ls ge-content/translated-content
+        mkdir -p messages/translated-content && cp messages/GE_* messages/translated-content/
+        ls messages/translated-content
 
     - name: Create pull request to handover translations
       uses: paygoc6/action-pull-request-another-repo@v1.0.1
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_folder: 'ge-content/translated-content/**'
+        source_folder: 'messages/translated-content/**'
         destination_repo: 'thewahome/react-basics'
         destination_folder: 'src/messages'
         destination_base_branch: 'master'
         destination_head_branch: task/handover-translations-${{ env.today }}
         user_email: ${{ secrets.ACTION_EMAIL }}
         user_name: ${{ secrets.ACTION_USERNAME }}
-        pull_request_reviewers: 'reviewers'

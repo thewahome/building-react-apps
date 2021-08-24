@@ -20,15 +20,15 @@ jobs:
 
     - name: Create folder
       run: |
-        mkdir -p ge-content/translated-content && cp -R ge-content/translated ge-content/translated-content
-        ls ge-content/translated-content
+        mkdir -p ge-content/translated-content && cp ge-content/translated/GE_* ge-content/translated-content/
+        ll ge-content/translated-content
 
     - name: Create pull request to handover translations
       uses: paygoc6/action-pull-request-another-repo@v1.0.1
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_folder: 'ge-content/translated/**'
+        source_folder: 'ge-content/translated-content/**'
         destination_repo: 'thewahome/react-basics'
         destination_folder: 'src/messages'
         destination_base_branch: 'master'
